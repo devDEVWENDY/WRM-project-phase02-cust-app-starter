@@ -27,6 +27,11 @@ export function App(params) {
 
   const handleInputChange = function (event) {
     log("in handleInputChange()");
+    const name = event.target.name;
+    const value = event.target.value;
+    let newFormObject = {...formObject}
+    newFormObject[name] = value;
+    setFormObject(newFormObject);
   }
 
   let onCancelClick = function () {
@@ -87,6 +92,7 @@ export function App(params) {
               <td><input
                 type="text"
                 name="name"
+                onChange={(e) => handleInputChange(e)}
                 value={formObject.name}
                 placeholder="Customer Name"
                 required /></td>
