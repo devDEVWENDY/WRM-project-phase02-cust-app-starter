@@ -1,5 +1,7 @@
 // import React from 'react';
-import customers from './memdb.js'
+// import customers from './memdb.js'
+import { getAll, post, put, deleteById } from './memdb.js';
+
 import './App.css';
 import React, {useState} from 'react';
 
@@ -7,6 +9,8 @@ function log(message){console.log(message);}
 
 export function App(params) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
+  const [customers, setCustomers] = useState([]);
+
  // let formObject = customers[0];
   const [formObject, setFormObject] = useState(blankCustomer);
   let mode = (formObject.id >= 0) ? 'Update' : 'Add';
