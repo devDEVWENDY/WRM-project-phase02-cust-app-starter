@@ -102,6 +102,7 @@ export function App(params) {
               <td><input
                 type="email"
                 name="email"
+                onChange={(e) => handleInputChange(e)}
                 value={formObject.email}
                 placeholder="name@company.com" /></td>
             </tr>
@@ -110,6 +111,7 @@ export function App(params) {
               <td><input
                 type="text"
                 name="password"
+                onChange={(e) => handleInputChange(e)}
                 value={formObject.password}
                 placeholder="password" /></td>
             </tr>
