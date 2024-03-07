@@ -8,12 +8,15 @@ function log(message){console.log(message);}
 
 export function App(params) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
-  const [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState([]);   // customers state keeper created
+                                                    // useEffect uses it (through getCustomers) to load empty array w/customers for display when app started
+                                                    // this is how dynamic data is 1st put on a page, useEffect not needed for static displays
 
  // let formObject = customers[0];
-  const [formObject, setFormObject] = useState(blankCustomer);
-  let mode = (formObject.id >= 0) ? 'Update' : 'Add';
-  useEffect(() => { getCustomers() }, []);
+  const [formObject, setFormObject] = useState(blankCustomer);  // formObject started as (empty) blank customer
+
+  let mode = (formObject.id >= 0) ? 'Update' : 'Add';   // MODE ternary to set form for UPDATE when customer index exists & ADD when -1 blank customer exists
+  useEffect(() => { getCustomers() }, []);    // 1x action gets list of all customers for display when app started
 
   const getCustomers =  function(){
     log("in getCustomers()");
@@ -53,7 +56,7 @@ export function App(params) {
   }
 
   let onSaveClick = function () {
-    if (mode === 'Add') {
+    if (mode === 'Add') {       // creates new customer & adds to customer array
       post(formObject);
     }
     if (mode === 'Update') {
@@ -75,6 +78,8 @@ export function App(params) {
             </tr>
           </thead>
           <tbody>
+            {/* below: maps over customers to create each row for a single customer item name, email, password */}
+
             {customers.map(
               (item, index) => {
                 {/* className: checks customer id matches form id to set className to selected for this customer item */}

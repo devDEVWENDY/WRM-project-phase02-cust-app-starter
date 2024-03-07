@@ -41,10 +41,10 @@ export function deleteById(id) {
   }
 }
 
-export function post(item) {
-  let nextid = getNextId();
+export function post(item) {      // adds new customer
+  let nextid = getNextId();       // get id for new customer
   item.id = nextid;
-  items[items.length] = item;
+  items[items.length] = item;     // add new customer to customers array
 }
 
 export function put(id, item) {
