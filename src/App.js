@@ -22,7 +22,13 @@ export function App(params) {
 
   const handleListClick = function(item){
     log("in handleListClick()");
-    setFormObject(item);
+    console.log("FORM", formObject.id);
+    console.log("ITEM", item.id);
+    if(formObject.id == item.id) {
+      setFormObject(blankCustomer);
+    } else {
+      setFormObject(item);
+    }
   }  
 
   const handleInputChange = function (event) {
